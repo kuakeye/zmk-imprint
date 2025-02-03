@@ -38,14 +38,14 @@
 
         Arrow_Media_Debug {
             bindings = <
-&trans  &trans   &trans   &trans         &trans       &trans            &trans  &rgb_ug RGB_TOG  &trans          &trans           &trans            &trans
-&trans  &trans   &trans   &trans         &trans       &trans            &trans  &rgb_ug RGB_TOG  &trans          &trans           &trans            &trans
-&trans  &trans   &trans   &trans         &trans       &trans            &trans  &rgb_ug RGB_HUI  &kp UP_ARROW    &rgb_ug RGB_BRI  &kp C_PLAY_PAUSE  &kp C_VOLUME_UP
-&trans  &trans   &trans   &trans         &trans       &trans            &trans  &kp LEFT_ARROW   &kp DOWN_ARROW  &kp RIGHT_ARROW  &trans            &trans
-&trans  &kp F10  &kp F11  &kp LC(LA(G))  &kp LS(F11)  &trans            &trans  &kp HOME         &kp PAGE_DOWN   &kp PAGE_UP      &kp END           &trans
-                 &trans   &trans                                                                 &trans          &trans
-                                         &trans       &trans  &trans    &trans  &trans           &trans
-                                         &trans       &trans  &trans    &trans  &trans           &trans
+&trans  &trans   &trans                &trans         &trans       &trans            &trans  &rgb_ug RGB_TOG  &trans          &trans           &trans            &trans
+&trans  &trans   &trans                &trans         &trans       &trans            &trans  &rgb_ug RGB_TOG  &trans          &trans           &trans            &trans
+&trans  &trans   &kp LS(LC(NUMBER_4))  &trans         &trans       &trans            &trans  &rgb_ug RGB_HUI  &kp UP_ARROW    &rgb_ug RGB_BRI  &kp C_PLAY_PAUSE  &kp C_VOLUME_UP
+&trans  &trans   &kp LG(S)             &trans         &trans       &trans            &trans  &kp LEFT_ARROW   &kp DOWN_ARROW  &kp RIGHT_ARROW  &trans            &trans
+&trans  &kp F10  &kp F11               &kp LC(LA(G))  &kp LS(F11)  &trans            &trans  &kp HOME         &kp PAGE_DOWN   &kp PAGE_UP      &kp END           &trans
+                 &trans                &trans                                                                 &trans          &trans
+                                                      &trans       &trans  &trans    &trans  &trans           &trans
+                                                      &trans       &trans  &trans    &trans  &trans           &trans
             >;
         };
 
