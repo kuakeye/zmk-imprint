@@ -27,3 +27,6 @@ More information can be found here: [ZMK Documentation](https://zmk.dev/docs).
 # Hardware Notes for Older nice!nano Versions:
 To enter bootloader mode, double tap the reset button on the back of your Cyboard.
 The battery switch is a physical disconnect switch, so your battery **will not charge** if the switch is off (away from the USB port).  The switch is intended as a way to disconnect the battery for travel to avoid accidental keypresses that would drain the battery while it is in your bag.  For most other times, it can just be left connected (towards the USB port), and your Cyboard will sleep after 15 minutes of inactivity to conserve battery.
+
+# Links
+[Trackball driver PMW3310 kconfig file](https://github.com/Cyboard-DigitalTailor/zmk-pmw3610-driver/blob/main/Kconfig): This file holds driver settings for the trackball sensor, including the `RUN` and `REST` modes (different levels of sleep) 
