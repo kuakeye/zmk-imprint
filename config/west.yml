@@ -9,25 +9,17 @@ manifest:
   projects:
     - name: zmk
       remote: zmkfirmware
-      # Pinned to zmk main HEAD as of the last known-good build (2025-11-17).
-      # Was `main`; upstream main moved on and introduced breaking changes.
-      revision: e34793e8c7193bc868b95ec38d78f67956f759cb
+      # Phase 2: build against the latest upstream ZMK main (Zephyr 4.1 stack).
+      revision: main
       import: app/west.yml
     - name: zmk-keyboards
       remote: Cyboard-DigitalTailor
-      # Pinned to Cyboard zmk-keyboards main HEAD as of the same date (2025-11-04).
-      # Was `main`; upstream added imprint dongle/input-split changes in Jul 2026.
-      revision: 0757b9d6ee067fd3793153cd667a00084e98914e
+      # Cyboard's `zephyr-4.1` branch is the one they maintain for current ZMK
+      # main / Zephyr 4.1: it uses the new hardware-model-v2 board layout
+      # (boards/cyboard/assimilator-bt) and the renamed `cyboard,pmw3610`
+      # trackball compatible. It transitively pulls zmk-pmw3610-driver at its
+      # matching (startup_optimization) revision, so no driver override here.
+      revision: zephyr-4.1
       import: config/west.yml
-    # Override the PMW3610 trackball driver, which zmk-keyboards pulls in
-    # transitively on the floating `startup_optimization` branch. That branch
-    # moved after Nov 2025 (Dec 11 2025 renamed the driver's `compatible`
-    # string for Zephyr 4.1), which broke the `pixart,pmw3610` nodes in the
-    # Nov-2025 board devicetree (undefined reference to __device_dts_ord_*).
-    # Pin it to the branch HEAD as of the last known-good build (2025-10-07).
-    # A top-level project definition takes precedence over the imported one.
-    - name: zmk-pmw3610-driver
-      remote: Cyboard-DigitalTailor
-      revision: 187c3e2e9ebe0cefca45da8ac1ed0bd31775b852
   self:
     path: config
