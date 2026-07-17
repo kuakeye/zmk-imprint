@@ -9,11 +9,15 @@ manifest:
   projects:
     - name: zmk
       remote: zmkfirmware
-      revision: main
+      # Pinned to zmk main HEAD as of the last known-good build (2025-11-17).
+      # Was `main`; upstream main moved on and introduced breaking changes.
+      revision: e34793e8c7193bc868b95ec38d78f67956f759cb
       import: app/west.yml
     - name: zmk-keyboards
       remote: Cyboard-DigitalTailor
-      revision: main
+      # Pinned to Cyboard zmk-keyboards main HEAD as of the same date (2025-11-04).
+      # Was `main`; upstream added imprint dongle/input-split changes in Jul 2026.
+      revision: 0757b9d6ee067fd3793153cd667a00084e98914e
       import: config/west.yml
   self:
     path: config
