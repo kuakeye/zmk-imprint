@@ -7,19 +7,29 @@ manifest:
     # Additional modules containing boards/shields/custom code can be listed here as well
     # See https://docs.zephyrproject.org/3.2.0/develop/west/manifest.html#projects
   projects:
+    # Phase 3: everything pinned to the exact commits verified green in CI
+    # (run #72, 2026-07-17) on the modern ZMK main / Zephyr 4.1 stack. Bumping
+    # to newer upstreams is now a deliberate choice (change a revision here and
+    # let CI verify) rather than something that happens silently on every push.
     - name: zmk
       remote: zmkfirmware
-      # Phase 2: build against the latest upstream ZMK main (Zephyr 4.1 stack).
-      revision: main
+      # zmk main HEAD @ 2026-07-17 (Zephyr 4.1).
+      revision: c77aa1c877cfd1e55c7733e2207affa1a90bc9aa
       import: app/west.yml
     - name: zmk-keyboards
       remote: Cyboard-DigitalTailor
-      # Cyboard's `zephyr-4.1` branch is the one they maintain for current ZMK
-      # main / Zephyr 4.1: it uses the new hardware-model-v2 board layout
-      # (boards/cyboard/assimilator-bt) and the renamed `cyboard,pmw3610`
-      # trackball compatible. It transitively pulls zmk-pmw3610-driver at its
-      # matching (startup_optimization) revision, so no driver override here.
-      revision: zephyr-4.1
+      # Cyboard's zephyr-4.1 branch HEAD @ 2026-07-17 (HWv2 board layout,
+      # cyboard,pmw3610 trackball). This is the branch Cyboard maintains for
+      # current ZMK main.
+      revision: ad5c9f2f382205c3332ccccd625109050b992b89
       import: config/west.yml
+    # Pin the trackball driver too, so the branch that zmk-keyboards pulls in
+    # transitively can't drift out from under us again (this exact failure mode
+    # is what broke the Nov-2025 reconstruction). Top-level project definitions
+    # take precedence over transitively-imported ones in west.
+    - name: zmk-pmw3610-driver
+      remote: Cyboard-DigitalTailor
+      # startup_optimization HEAD @ 2026-07-17.
+      revision: 182ee5f4c2cc0e2a2a03da13f18024224af55bce
   self:
     path: config

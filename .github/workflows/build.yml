@@ -2,7 +2,8 @@ on: [push, pull_request, workflow_dispatch]
 
 jobs:
   build:
-    # Phase 2: back on the current reusable workflow. The zephyr-4.1 board uses
-    # the new hardware-model-v2 layout, so the board-variant compat check that
-    # crashed on the old Nov-2025 board format is satisfied here.
-    uses: zmkfirmware/zmk/.github/workflows/build-user-config.yml@main
+    # Phase 3: pin the reusable workflow to the same zmk commit as config/west.yml
+    # (verified green in CI run #72). This freezes the CI behavior too, so a future
+    # change to the @main workflow can't break the build unexpectedly. Bump this
+    # ref together with the zmk revision in config/west.yml when you intend to.
+    uses: zmkfirmware/zmk/.github/workflows/build-user-config.yml@c77aa1c877cfd1e55c7733e2207affa1a90bc9aa
