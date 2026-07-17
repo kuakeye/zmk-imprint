@@ -19,5 +19,15 @@ manifest:
       # Was `main`; upstream added imprint dongle/input-split changes in Jul 2026.
       revision: 0757b9d6ee067fd3793153cd667a00084e98914e
       import: config/west.yml
+    # Override the PMW3610 trackball driver, which zmk-keyboards pulls in
+    # transitively on the floating `startup_optimization` branch. That branch
+    # moved after Nov 2025 (Dec 11 2025 renamed the driver's `compatible`
+    # string for Zephyr 4.1), which broke the `pixart,pmw3610` nodes in the
+    # Nov-2025 board devicetree (undefined reference to __device_dts_ord_*).
+    # Pin it to the branch HEAD as of the last known-good build (2025-10-07).
+    # A top-level project definition takes precedence over the imported one.
+    - name: zmk-pmw3610-driver
+      remote: Cyboard-DigitalTailor
+      revision: 187c3e2e9ebe0cefca45da8ac1ed0bd31775b852
   self:
     path: config
